@@ -1,5 +1,7 @@
- 	"""solve the contacts problem. modified from the java version answer in the video of Gayle Laakmann McDowell"""
-	
+'''
+solve the contacts problem. modified from the java version answer
+in the video of Gayle Laakmann McDowell
+'''	
 class Node(object):
 
 	__slots__ = ['count', 'children'] 	#Space is saved because __dict__ is not created for each instance.
@@ -23,7 +25,7 @@ class Node(object):
 		self.count += 1	
 		if index == len(string):
 			return
-
+		# self.count += 1
 		char = string[index]
 		child = self.getNode(char)
 		if child == None:
