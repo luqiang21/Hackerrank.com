@@ -1,5 +1,7 @@
+ 	"""solve the contacts problem. modified from the java version answer in the video of Gayle Laakmann McDowell"""
+	
 class Node(object):
- 	"""solve the contacts problem"""
+
 	__slots__ = ['count', 'children'] 	#Space is saved because __dict__ is not created for each instance.
  	def __init__(self):
  		self.children = [None] * 26
