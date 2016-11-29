@@ -21,7 +21,7 @@ print staircase(30) # 53798080
 print staircase(36) # 2082876103
 
 def staircase(n):
-	# DP approach
+	# Recursive
 	if n == 1:
 		return 1
 	if n == 2:
@@ -30,9 +30,11 @@ def staircase(n):
 		return 4
 	return staircase(n-1) + staircase(n-2) + staircase(n-3)
 # same result, but take much longer time
+print 'Recursive Approach'
 print staircase(1) # 1
 # print staircase(30) # 53798080
 # print staircase(36) # 2082876103	
+
 
 memory = {1:1, 2:2, 3:4}
 def staircase(n):
@@ -40,6 +42,45 @@ def staircase(n):
         memory[n] = staircase(n-1) + staircase(n-2) + staircase(n-3)
     return memory[n] 
 # using memory, much more efficient
+print staircase(1) # 1
+print staircase(30) # 53798080
+print staircase(36) # 2082876103	
+
+# DP approach
+def staircase(n):
+	if n < 0:
+		return 0
+	elif n <= 1:
+		return 1
+
+	paths = [None] * (n + 1)
+	paths[0] = 1
+	paths[1] = 1
+	paths[2] = 2
+	for i in range(3, n + 1):
+		paths[i] = paths[i - 1] + paths[i - 2] + paths[i - 3]
+	return paths[n]
+print 'DP'
+print staircase(1) # 1
+print staircase(30) # 53798080
+print staircase(36) # 2082876103	
+
+# save space 
+def staircase(n):
+	if n < 0:
+		return 0
+	elif n <= 1:
+		return 1
+
+	paths = [1,1,2]
+	for i in range(3, n + 1):
+		count = paths[0] + paths[1] + paths[2]
+		paths[0] = paths[1]
+		paths[1] = paths[2]
+		paths[2] = count
+	return paths[2]
+
+print 'Another DP save space version'
 print staircase(1) # 1
 print staircase(30) # 53798080
 print staircase(36) # 2082876103	
