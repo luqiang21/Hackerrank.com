@@ -19,3 +19,27 @@ def staircase(n):
 print staircase(1) # 1
 print staircase(30) # 53798080
 print staircase(36) # 2082876103
+
+def staircase(n):
+	# DP approach
+	if n == 1:
+		return 1
+	if n == 2:
+		return 2
+	if n == 3:
+		return 4
+	return staircase(n-1) + staircase(n-2) + staircase(n-3)
+# same result, but take much longer time
+print staircase(1) # 1
+# print staircase(30) # 53798080
+# print staircase(36) # 2082876103	
+
+memory = {1:1, 2:2, 3:4}
+def staircase(n):
+    if n not in memory.keys():
+        memory[n] = staircase(n-1) + staircase(n-2) + staircase(n-3)
+    return memory[n] 
+# using memory, much more efficient
+print staircase(1) # 1
+print staircase(30) # 53798080
+print staircase(36) # 2082876103	
